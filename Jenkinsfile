@@ -25,18 +25,18 @@ node{
         sh "docker push ${dockerImageName}"
       }
       
-    stage('Run Docker Image'){
-            def dockerContainerName = 'javadockerapp_$JOB_NAME_$BUILD_NUMBER'
-            def changingPermission='sudo chmod +x stopscript.sh'
-            def scriptRunner='sudo ./stopscript.sh'           
-            def dockerRun= "sudo docker run -p 8082:8080 -d --name ${dockerContainerName} ${dockerImageName}" 
-            withCredentials([string(credentialsId: 'deploymentserverpwd', variable: 'dpPWD')]) {
-                  sh "sshpass -p ${dpPWD} ssh -o StrictHostKeyChecking=no mahsahsii@5.121.30.41" 
-                  sh "sshpass -p ${dpPWD} scp -r stopscript.sh devops@5.121.30.41:/home/mahsahsii" 
-                  sh "sshpass -p ${dpPWD} ssh -o StrictHostKeyChecking=no mahsahsii@5.121.30.41 ${changingPermission}"
-                  sh "sshpass -p ${dpPWD} ssh -o StrictHostKeyChecking=no mahsahsii@5.121.30.41 ${scriptRunner}"
-                  sh "sshpass -p ${dpPWD} ssh -o StrictHostKeyChecking=no mahsahsii@5.121.30.41 ${dockerRun}"
-            }
+    //stage('Run Docker Image'){
+            //def dockerContainerName = 'javadockerapp_$JOB_NAME_$BUILD_NUMBER'
+            //def changingPermission='sudo chmod +x stopscript.sh'
+            //def scriptRunner='sudo ./stopscript.sh'           
+            //def dockerRun= "sudo docker run -p 8082:8080 -d --name ${dockerContainerName} ${dockerImageName}" 
+            //withCredentials([string(credentialsId: 'deploymentserverpwd', variable: 'dpPWD')]) {
+                  //sh "sshpass -p ${dpPWD} ssh -o StrictHostKeyChecking=no mahsahsii@5.121.30.41" 
+                  //sh "sshpass -p ${dpPWD} scp -r stopscript.sh devops@5.121.30.41:/home/mahsahsii" 
+                  //sh "sshpass -p ${dpPWD} ssh -o StrictHostKeyChecking=no mahsahsii@5.121.30.41 ${changingPermission}"
+                  //sh "sshpass -p ${dpPWD} ssh -o StrictHostKeyChecking=no mahsahsii@5.121.30.41 ${scriptRunner}"
+                  //sh "sshpass -p ${dpPWD} ssh -o StrictHostKeyChecking=no mahsahsii@5.121.30.41 ${dockerRun}"
+      //      }
             
       
       }
