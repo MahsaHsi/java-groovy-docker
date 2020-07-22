@@ -37,7 +37,7 @@ node{
                   //sh "sshpass -p ${dpPWD} ssh -o StrictHostKeyChecking=no mahsahsii@5.121.30.41 ${scriptRunner}"
                   //sh "sshpass -p ${dpPWD} ssh -o StrictHostKeyChecking=no mahsahsii@5.121.30.41 ${dockerRun}"
       //      }
-            // commit3
+            // commit20
       
       //}
       
